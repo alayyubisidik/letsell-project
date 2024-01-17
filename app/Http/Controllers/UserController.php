@@ -95,7 +95,7 @@ class UserController extends Controller
 
         $users = User::where('role', 'customer')->orWhere('role', 'seller')->get();
 
-        return view('dashboard.user.index', [
+        return view('dashboard-admin.user.index', [
             'users' => $users
         ]);
     }
@@ -105,6 +105,6 @@ class UserController extends Controller
         $user->status = intval($request->status);
         $user->save();
 
-        return redirect('/dashboard/user');
+        return redirect()->back();
     }
 }

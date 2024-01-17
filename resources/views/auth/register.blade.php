@@ -37,11 +37,11 @@
         @enderror
         <input type="number" name="contact" id="contact" value="{{ old('contact') }}">
         
-        <label style="margin: 1rem 0 .3rem; display: block" for="nisn">NISN</label>
+        <label style="margin: 1rem 0 .3rem; display: block" for="nis">NIS</label>
         @error('nisn')
             <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
         @enderror
-        <input type="number" name="nisn" id="nisn" value="{{ old('nisn') }}">
+        <input type="number" name="nis" d="nis" value="{{ old('nis') }}">
         
         <label style="margin: 1rem 0 .3rem; display: block" for="profilePicture">Profile Picture</label>
         @error('profile_picture')

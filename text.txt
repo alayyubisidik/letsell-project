@@ -1,0 +1,12 @@
+SELECT
+    users.id as user_id,
+    users.username,
+    private_collections.id as private_collections_id,
+    books.title
+FROM
+    users
+INNER JOIN
+    private_collections ON private_collections.user_id = private_collections.user_id
+INNER JOIN
+    books ON books.id = private_collections.book_id
+WHERE users.username = "deru";

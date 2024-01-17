@@ -11,7 +11,7 @@
     <div class="" style="display: flex; justify-content: space-between; background-color: #aaa; align-items: center; padding: .3rem 10%;">
         <div class="">Navbar</div>
         <ul style="display: flex; list-style: none; gap: 4rem">
-            @if (!session('role'))
+            @if (!Auth::user())
                 <li>
                     <a href="/login">Login</a>
                 </li>
@@ -20,7 +20,18 @@
                     <a href="/logout">Logout</a>
                 </li>
             @endif
-            @if (session('role') && session('role') == 'customer')
+            @if (Auth::user() && Auth::user()->role == 'customer')
+                <li>
+                    <a href="/store-create">Start Selling</a>
+                </li>
+                <li>
+                    <a href="/profile">Profile</a>
+                </li>
+            @endif
+            @if (Auth::user() && Auth::user()->role == 'seller')
+                <li>
+                    <a href="/store/{{ session('store')->slug }}">My Store</a>
+                </li>
                 <li>
                     <a href="/profile">Profile</a>
                 </li>

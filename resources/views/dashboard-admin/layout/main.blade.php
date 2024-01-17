@@ -11,13 +11,16 @@
         <div class="" style="background-color: #aaa; width: 20%;">
             <u style="display:flex; flex-direction: column; gap: 2rem">
                 <li>
-                    <a href="/dashboard">Dashboard</a>
+                    <a href="/dashboard-admin">Dashboard</a>
                 </li>
                 <li>
-                    <a href="/dashboard/user">User</a>
+                    <a href="/dashboard-admin/user">User</a>
                 </li>
                 <li>
-                    <a href="/dashboard/product">Product</a>
+                    <a href="/dashboard-admin/product">Product</a>
+                </li>
+                <li>
+                    <a href="/dashboard-admin/category">Category</a>
                 </li>
             </u>
         </div>
