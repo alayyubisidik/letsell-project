@@ -23,24 +23,19 @@ class DashboardAdminController extends Controller
             return view('dashboard-admin.category.create');
         }else{
 
+            $request->validate([
+                'name' => 'required|string|min:3|unique:categories,name'
+            ]);
+
             Category::create([
                 'name' => $request->input('name'),
-                'slug' => Str::slug($request->input('name'))
+                'slug' => Str::slug($request->input('name'), '-'),
             ]);
 
             return redirect('/dashboard-admin/category');
         }
     }
 
-    public function createProduct(Request $request){
-        if($request->isMethod('GET')){
-            return view('dashboard-admin.product.create');
-        }else{
-            dd($request->all());
-            return redirect('/dashboard-admin/product');
-        }
-    }
-
-    
+ 
 
 }

@@ -10,14 +10,13 @@
 
     <style>
         td, th{
-            padding: 1rem
+            padding: 2rem
         }
     </style>
 
     <table>
         <tr>
             <th>No</th>
-            <th>Image</th>
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
@@ -26,15 +25,13 @@
         @foreach ($products as $product)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>
-                    <img style="width: 10rem" src="{{ asset('/storage/image-product/' . $product->image) }}" alt="">
-                </td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
                 <td>
-                    <a href="">Edit</a>
-                    <a href="">Hapus</a>
+                    <a href="/dashboard-seller/product/edit/{{ $product->slug }}">Edit</a>
+                    <a href="/dashboard-seller/product/delete/{{ $product->slug }}">Hapus</a>
+                    <a href="/dashboard-seller/product-image/{{ $product->slug }}">Edit Product Image</a>
                 </td>
             </tr>
         @endforeach

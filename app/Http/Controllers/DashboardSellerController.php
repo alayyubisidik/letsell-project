@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -102,6 +104,10 @@ class DashboardSellerController extends Controller
             ]);
         }else{
 
+            $request->validate([
+                'banner' => 'image|mimes:jpg,png,jpeg|max:5000'
+            ]);
+    
             Storage::disk('public')->delete('banner-store/' . $banner->image);
             $banner->delete();
 
@@ -118,7 +124,7 @@ class DashboardSellerController extends Controller
 
     public function product(){
 
-        $products = Product::all();
+        $products = Product::with('productImages')->get();
 
         return view('store.dashboard-seller.product.index', [
             'products' => $products
@@ -128,17 +134,155 @@ class DashboardSellerController extends Controller
     public function createProduct(Request $request){
 
         if($request->isMethod('GET')){
-            $products = Product::all();
+            $categories = Category::all();
             return view('store.dashboard-seller.product.create', [
-                'products' => $products
+                'categories' => $categories
             ]);
         }else{
-            dd($request->all());
-        }
 
+            // dd($request->all());
+            $store = Store::where('user_id', Auth::user()->id)->first();
+
+            $request->validate([
+                'category_id' => 'required|numeric',
+                'name' => 'required|string|min:3',
+                'price' => 'required|numeric',
+                'stock' => 'required|numeric',
+                'images' => 'required|array|max:5',
+                'images.*' => 'image|mimes:jpeg,png,jpg|max:5000', // Sesuaikan dengan jenis file gambar yang diizinkan dan ukuran maksimum
+            ]);
+
+            $product = Product::create([
+                'category_id' => $request->input('category_id'),
+                'store_id' => $store->id,
+                'name' => $request->input('name'),
+                'slug' => Str::slug($request->input('name'), '-'),
+                'price' => $request->input('price'),
+                'stock' => $request->input('stock'),
+            ]);
+
+            foreach ($request->file('images') as $image) {
+                // $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $imageName = time() . '_' . mt_rand(100000, 999999) . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('product-image', $imageName, 'public');
+                ProductImage::create([
+                    'image' => $imageName,
+                    'product_id' => $product->id
+                ]);
+            }
+
+
+            return redirect('/dashboard-seller/product');
+        }
     }
 
+    public function EditProduct(Request $request, $slug){
+        $product = Product::where('slug', $slug)->with('productImages')->first();
+        if($request->isMethod('GET')){
+            // dd($product);
+            $categories = Category::all();
+            return view('store.dashboard-seller.product.edit', [
+                'categories' => $categories,
+                'product' => $product
+            ]);
+        }else{
+            $request->validate([
+                'category_id' => 'numeric',
+                'name' => 'string|min:3',
+                'price' => 'numeric',
+                'stock' => 'numeric',
+            ]);
 
+            $slug = Str::slug($request->input('name'), '-');
+
+            $product->name = $request->input('name');
+            $product->slug = $slug;
+            $product->category_id = $request->input('category_id');
+            $product->price = $request->input('price');
+            $product->stock = $request->input('stock');
+            $product->save();
+
+            return redirect('/dashboard-seller/product');
+        }
+    }
+
+    public function deleteProduct($slug){
+        $product = Product::where('slug', $slug)->first();
+
+        ProductImage::where('product_id', $product->id)->delete();
+
+        // Hapus juga produknya jika diperlukan
+        $product->delete();
+
+        return redirect()->back();
+    }
+
+    public function productImage(Request $request, $slug){
+        $product = Product::where('slug', $slug)->with('productImages')->first();
+        return view('store.dashboard-seller.product.product-image', [
+            'product' => $product,
+            'slug' => $slug
+        ]);
+    }
+
+    public function createProductImage(Request $request, $slug){
+        if($request->isMethod('GET')){
+            return view('store.dashboard-seller.product.create-product-image', [
+                'slug' => $slug
+            ]);
+        }else{
+            $request->validate([
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5000'
+            ]);
+
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('product-image', $imageName, 'public');
+
+            $product = Product::where('slug', $slug)->first();
+
+            ProductImage::create([
+                'image' => $imageName,
+                'product_id' => $product->id
+            ]);
+
+            return redirect('/dashboard-seller/product-image/' . $slug);
+        }
+    }
+
+    public function editProductImage(Request $request, $slug, $productImageId){
+        $productImage = ProductImage::find($productImageId);
+        if($request->isMethod('GET')){
+            return view('store.dashboard-seller.product.edit-product-image', [
+                'productImage' => $productImage,
+                'slug' => $slug
+            ]);
+        }else{
+            
+            $request->validate([
+                'image' => 'required|image|mimes:jpg,png,jpeg|max:5000'
+            ]);
+    
+            Storage::disk('public')->delete('product-image/' . $productImage->image);
+            $productImage->delete();
+
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('product-image', $imageName, 'public');
+
+            $productImage->image = $imageName;
+            $productImage->save();
+
+            return redirect('/dashboard-seller/product-image/' . $slug)->with('message', 'Delete banner successfully');
+        }
+    }
+
+    public function deleteProductImage( $id){
+        $productImage = ProductImage::find($id);
+        Storage::disk('public')->delete('product-image/' . $productImage->image);
+        $productImage->delete();
+        return redirect()->back();
+    }
 
 
 }

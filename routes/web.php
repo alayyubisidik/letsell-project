@@ -43,7 +43,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/dashboard-admin/user/approve-the-user', [UserController::class, 'approveTheUser']);
     
     Route::get('/dashboard-admin/product', [DashboardAdminController::class, 'index']);
-    Route::match(['get', 'post'], '/dashboard-admin/product/create', [DashboardAdminController::class, 'createProduct']);
+    // Route::match(['get', 'post'], '/dashboard-admin/product/create', [DashboardAdminController::class, 'createProduct']);
     Route::get('/dashboard-admin/category', [DashboardAdminController::class, 'category']);
     Route::match(['get', 'post'], '/dashboard-admin/category/create', [DashboardAdminController::class, 'createCategory']);
     
@@ -66,8 +66,14 @@ Route::middleware(['role:seller'])->group(function () {
     
     Route::get("/dashboard-seller/product", [DashboardSellerController::class, 'product']);
     Route::match(['get', 'post'], '/dashboard-seller/product/create', [DashboardSellerController::class, 'createProduct']);
-    
-    
+    Route::match(['get', 'post'], '/dashboard-seller/product/edit/{slug}', [DashboardSellerController::class, 'EditProduct']);
+    Route::get("/dashboard-seller/product/delete/{slug}", [DashboardSellerController::class, 'deleteProduct']);
+    Route::get("/dashboard-seller/product-image/{slug}", [DashboardSellerController::class, 'productImage']);
+    Route::match(['get', 'post'], '/dashboard-seller/product-image/create/{slug}', [DashboardSellerController::class, 'createProductImage']);
+    Route::match(['get', 'post'], '/dashboard-seller/product-image/edit/{slug}/{product_image_id}', [DashboardSellerController::class, 'editProductImage']);
+    Route::get("/dashboard-seller/product-image/delete/{id}", [DashboardSellerController::class, 'deleteProductImage']);
+
+
 });
 
 Route::middleware(['customer-and-seller'])->group(function () {
