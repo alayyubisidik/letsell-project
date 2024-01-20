@@ -124,7 +124,7 @@ class DashboardSellerController extends Controller
 
     public function product(){
 
-        $products = Product::with('productImages')->get();
+        $products = Product::with('productImages')->where('store_id', session('store')->id)->get();
 
         return view('store.dashboard-seller.product.index', [
             'products' => $products
@@ -206,14 +206,19 @@ class DashboardSellerController extends Controller
         }
     }
 
-    public function deleteProduct($slug){
-        $product = Product::where('slug', $slug)->first();
-
-        ProductImage::where('product_id', $product->id)->delete();
-
-        // Hapus juga produknya jika diperlukan
+    public function deleteProduct($slug)
+    {
+        $product = Product::where('slug', $slug)->with('productImages')->first();
+    
+        // Menghapus semua gambar terkait
+        foreach ($product->productImages as $productImage) {
+            Storage::disk('public')->delete('product-image/' . $productImage->image);
+            $productImage->delete();
+        }
+    
+        // Menghapus produk
         $product->delete();
-
+    
         return redirect()->back();
     }
 

@@ -24,9 +24,11 @@ Route::get('/', function () {
 });
 
 Route::get('/logout', [AuthController::class, 'logout']); 
+Route::get('/product', [ProductController::class, 'product']); 
+Route::get('/product/{slug}', [ProductController::class, 'productDetail']); 
+
 
 Route::middleware(['guest'])->group(function () {
-    // Route::match(['get', 'post'], '/login', [AuthController::class, 'login']);
     Route::get('/login', [AuthController::class, 'showLogin']);
     Route::post('/login', [AuthController::class, 'submitLogin']);
     Route::match(['get', 'post'], '/register', [AuthController::class, 'register']);
@@ -73,7 +75,6 @@ Route::middleware(['role:seller'])->group(function () {
     Route::match(['get', 'post'], '/dashboard-seller/product-image/edit/{slug}/{product_image_id}', [DashboardSellerController::class, 'editProductImage']);
     Route::get("/dashboard-seller/product-image/delete/{id}", [DashboardSellerController::class, 'deleteProductImage']);
 
-
 });
 
 Route::middleware(['customer-and-seller'])->group(function () {
@@ -83,6 +84,8 @@ Route::middleware(['customer-and-seller'])->group(function () {
     
 });
 
+// Route::get('/store', [StoreController::class, 'storeLayout']); 
 Route::get('/store/{slug}', [StoreController::class, 'storePage']); 
+Route::get('/store/{slug}/product', [StoreController::class, 'productPage']); 
 
 

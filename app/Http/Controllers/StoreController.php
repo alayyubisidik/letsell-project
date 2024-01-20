@@ -12,10 +12,15 @@ use PhpParser\Node\Stmt\Else_;
 class StoreController extends Controller
 {
 
+
     public function storePage(Request $request, $slug)
     {
-        // dd(session('slug'));
-        $store = Store::where('slug', $slug)->first();
+        $store = Store::where('slug', $slug)
+                        ->withCount('products')
+                        ->with('banners')
+                        ->first();
+
+        // dd($store);
 
         if ($store->subscription_expiry_date && now() > $store->subscription_expiry_date) {
             $request->session()->forget('store');
@@ -61,7 +66,7 @@ class StoreController extends Controller
                 "subscription_status" => 0,
             ]);
 
-            $user = User::where('id', session('id'))->first();
+            $user = User::where('id', Auth::user()->id)->first();
             $user->role = "seller";
             $user->save();
 
@@ -72,38 +77,42 @@ class StoreController extends Controller
         }
     }
 
-    public function subscription(Request $request)
-    {
-        $user = User::where('username', Auth::user()->username)->first();
-        // dd(config('midtrans.server_key'));
-
-        // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => 10000,
-            ),
-            'customer_details' => array(
-                'name' => $user->name,
-                'phone' => $user->contact,
-            ),
-        );
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-
-        return view('store.subscription.index', [
-            "user" => $user,
-            "snaptoken" => $snapToken 
-        ]);
-        
+    public function productPage(){
+        return view('store.product');
     }
+
+    // public function subscription(Request $request)
+    // {
+    //     $user = User::where('username', Auth::user()->username)->first();
+    //     // dd(config('midtrans.server_key'));
+
+    //     // Set your Merchant Server Key
+    //     \Midtrans\Config::$serverKey = config('midtrans.server_key');
+    //     // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+    //     \Midtrans\Config::$isProduction = false;
+    //     // Set sanitization on (default)
+    //     \Midtrans\Config::$isSanitized = true;
+    //     // Set 3DS transaction for credit card to true
+    //     \Midtrans\Config::$is3ds = true;
+
+    //     $params = array(
+    //         'transaction_details' => array(
+    //             'order_id' => rand(),
+    //             'gross_amount' => 10000,
+    //         ),
+    //         'customer_details' => array(
+    //             'name' => $user->name,
+    //             'phone' => $user->contact,
+    //         ),
+    //     );
+
+    //     $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+    //     return view('store.subscription.index', [
+    //         "user" => $user,
+    //         "snaptoken" => $snapToken 
+    //     ]);
+        
+    // }
 
 }
