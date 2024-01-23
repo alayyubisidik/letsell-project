@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,7 +13,7 @@ class UserController extends Controller
     public function profilePage()
     {
 
-        $user = User::where('username', session('username'))->first();
+        $user = User::where('username', Auth::user()->username)->first();
 
         return view('profile.index', [
             "user" => $user
@@ -22,7 +23,7 @@ class UserController extends Controller
     public function profileEdit(Request $request)
     {
 
-        $user = User::where('username', session('username'))->first();
+        $user = User::where('username', Auth::user()->username)->first();
 
         if ($request->isMethod('get')) {
 
@@ -55,7 +56,7 @@ class UserController extends Controller
             $user->name = $request->input('name', $user->name);
             $user->username = $request->input('username', $user->username);
             $user->contact = $request->input('contact', $user->contact);
-            $user->nisn = $request->input('nisn', $user->nisn);
+            $user->nis = $request->input('nis', $user->nis);
 
             $user->save();
 
@@ -91,20 +92,5 @@ class UserController extends Controller
         }
     }
 
-    public function dashboardUserPage(){
-
-        $users = User::where('role', 'customer')->orWhere('role', 'seller')->get();
-
-        return view('dashboard-admin.user.index', [
-            'users' => $users
-        ]);
-    }
-
-    public function approveTheUser(Request $request){
-        $user = User::where('username', $request->username)->first();
-        $user->status = intval($request->status);
-        $user->save();
-
-        return redirect()->back();
-    }
+    
 }

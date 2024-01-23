@@ -19,7 +19,7 @@ class DashboardSellerController extends Controller
         return view('store.dashboard-seller.index');
     }
 
-    public function store(){
+    public function showStore(){
 
         $store = Store::where('user_id', Auth::user()->id)->with('banners')->first();
         // dd($store);
@@ -122,7 +122,7 @@ class DashboardSellerController extends Controller
         }
     }
 
-    public function product(){
+    public function showProduct(){
 
         $products = Product::with('productImages')->where('store_id', session('store')->id)->get();
 
@@ -222,7 +222,7 @@ class DashboardSellerController extends Controller
         return redirect()->back();
     }
 
-    public function productImage(Request $request, $slug){
+    public function showProductImage(Request $request, $slug){
         $product = Product::where('slug', $slug)->with('productImages')->first();
         return view('store.dashboard-seller.product.product-image', [
             'product' => $product,

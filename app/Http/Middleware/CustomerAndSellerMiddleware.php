@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerAndSellerMiddleware
 {
@@ -17,11 +18,11 @@ class CustomerAndSellerMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-        if(!session('role')){
+        if(!Auth::user()){
             return redirect('/');
         }
 
-        if(session('role') == 'customer' || session('role') == 'seller'){
+        if(Auth::user()->role == 'customer' || Auth::user()->role == 'seller'){
             return $next($request);
         }else{
             return redirect('/');

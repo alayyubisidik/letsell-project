@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function product(Request $request)
+    public function showProduct(Request $request)
     {
 
         $categories = Category::withCount('products')->get();
@@ -66,7 +66,7 @@ class ProductController extends Controller
         }
     }
 
-    public function productDetail($slug){
+    public function showProductDetail($slug){
 
         $product = Product::where('slug', $slug)
         ->with('productImages')

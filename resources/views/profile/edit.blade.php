@@ -32,11 +32,11 @@
         @enderror
         <input type="number" name="contact" id="contact" value="{{ $user->contact }}">
         
-        <label style="margin: 1rem 0 .3rem; display: block" for="nisn">NISN</label>
+        <label style="margin: 1rem 0 .3rem; display: block" for="nis">NIS</label>
         @error('nisn')
             <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
         @enderror
-        <input type="number" name="nisn" id="nisn" value="{{ $user->nisn }}">
+        <input type="number" name="nis" id="nis" value="{{ $user->nis }}">
         
         <button style="display: block; margin: 2rem 0" type="submit">Save</button>
     </form>

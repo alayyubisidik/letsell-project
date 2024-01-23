@@ -15,16 +15,26 @@
 
             <p style="font-size: large; font-weight: bold;">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
 
-            <div style="display: flex; gap: 1rem">
-                <p>Quantity</p>
-                <input type="number" name="" id="">
-                <p>{{ $product->stock }} pieces available</p>
-            </div>
-
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <a href="">Add to cart</a>
-                <a href="">Buy Now</a>
-            </div>
+            <form action="/cart" method="POST">
+                @csrf
+                @if (session('message-error'))
+                    <p style="color: red; font-size: small;">{{ session('message-error') }}</p>
+                @endif
+                @if (session('message-success'))
+                    <p style="color: green; font-size: small;">{{ session('message-success') }}</p>
+                @endif
+                <div style="display: flex; gap: 1rem">
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <p>Quantity</p>
+                    <input type="number" name="quantity" >
+                    <p>{{ $product->stock }} pieces available</p>
+                </div>
+    
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="submit">Add to cart</button>
+                    <a href="">Buy Now</a>
+                </div>
+            </form>
 
         </div>
     </div>

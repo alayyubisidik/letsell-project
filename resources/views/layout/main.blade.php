@@ -19,6 +19,16 @@
         </form>
 
         <ul style="display: flex; list-style: none; gap: 4rem">
+            @if (Auth::user())
+                @if (Auth::user()->role == 'customer')
+                    <li>
+                        <a href="/purchase">Purchase</a>
+                    </li>
+                    <li>
+                        <a href="/cart">Cart</a>
+                    </li>
+                @endif
+            @endif
             <li>
                 <a href="/product">Product</a>
             </li>
