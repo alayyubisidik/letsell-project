@@ -40,6 +40,18 @@ class Product extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+
+
 
 
 }

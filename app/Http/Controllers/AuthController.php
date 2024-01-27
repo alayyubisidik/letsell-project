@@ -24,6 +24,10 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('username', $request->username)->first();
+        if(!$user->status){
+            return redirect('/login')->with('message-error', 'Your account has not been approved');
+        }
+        // dd($user);
         if($user){
             if (Hash::check($request->password, $user->password)) {
                 Auth::login($user);
@@ -95,10 +99,11 @@ class AuthController extends Controller
     // }
 
     public function register (Request $request){
-
+        
         if($request->isMethod('get')){
             return view('auth.register');
         }else{
+            // dd($request->all());
             $request->validate([
                 'name' => 'required|string|min:3|max:255',
                 'username' => 'required|string|min:3|unique:users,username',

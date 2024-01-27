@@ -12,8 +12,10 @@
             </div>
             <div>
                 <h2>{{ $store->name }}</h2>
-                @if (Auth::user() && Auth::user()->id == session('store')->user_id)
-                    <a href="/dashboard-seller">Dashboard</a>
+                @if (Auth::user())
+                    @if (Auth::user()->role == 'seller' && Auth::user()->id == session('store')->user_id)
+                        <a href="/dashboard-seller">Dashboard</a>
+                    @endif
                 @endif
             </div>
         </div>

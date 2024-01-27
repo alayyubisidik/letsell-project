@@ -25,6 +25,12 @@
             @endforeach
         </select>
 
+        <label style="margin: 1rem 0 .3rem; display: block" for="description">Description</label>
+        @error('description')
+            <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+        @enderror
+        <input type="text" name="description" id="description" value="{{ old('description') }}">
+
         <label style="margin: 1rem 0 .3rem; display: block" for="price">Price</label>
         @error('price')
             <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>

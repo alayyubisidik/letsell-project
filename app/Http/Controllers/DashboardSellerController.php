@@ -146,6 +146,7 @@ class DashboardSellerController extends Controller
             $request->validate([
                 'category_id' => 'required|numeric',
                 'name' => 'required|string|min:3',
+                'description' => 'required|string|min:3',
                 'price' => 'required|numeric',
                 'stock' => 'required|numeric',
                 'images' => 'required|array|max:5',
@@ -156,6 +157,7 @@ class DashboardSellerController extends Controller
                 'category_id' => $request->input('category_id'),
                 'store_id' => $store->id,
                 'name' => $request->input('name'),
+                'description' => $request->input('description'),
                 'slug' => Str::slug($request->input('name'), '-'),
                 'price' => $request->input('price'),
                 'stock' => $request->input('stock'),

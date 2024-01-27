@@ -31,7 +31,13 @@ class CartController extends Controller
         }
     }
 
+
     public function addToCart(Request $request){
+
+        $request->validate([
+            'quantity' => 'required|numeric|min:1'
+        ]);
+
         $product_id = intval($request->product_id);
         $quantity = intval($request->quantity);
 

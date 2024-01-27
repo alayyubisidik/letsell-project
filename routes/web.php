@@ -8,8 +8,12 @@ use App\Http\Controllers\DashboardSellerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,7 +61,7 @@ Route::middleware(['role:admin'])->group(function () {
 
 Route::middleware(['role:customer'])->group(function () {
     Route::match(['get', 'post'], '/store-create', [StoreController::class, 'createStore']);
-
+    
     Route::get('/cart', [CartController::class, 'showCart']);
     Route::post('/cart', [CartController::class, 'addToCart']);
     Route::get('/cart/delete/{cart_item_id}', [CartController::class, 'deleteCartItem']);
@@ -66,7 +70,16 @@ Route::middleware(['role:customer'])->group(function () {
     Route::post('/checkout/order', [CheckoutController::class, 'submitCheckout']);
 
     Route::get('/purchase', [PurchaseController::class, 'showPurchase']);
+    Route::get('/purchase/cancel', [PurchaseController::class, 'cancelOrder']);
+
+    Route::get('/wishlist', [WishlistController::class, 'showWishlist']);
+    Route::get('/wishlist/create/{product_id}', [WishlistController::class, 'submitWishlist']);
+    Route::get('/wishlist/delete/{product_id}', [WishlistController::class, 'deleteWishlist']);
     
+    Route::get('/rating', [RatingController::class, 'showRating']);
+    Route::post('/rating/create', [RatingController::class, 'submitRating']);
+
+    Route::post('/report', [ReportController::class, 'submitReport']);
 });
 
 Route::middleware(['role:seller'])->group(function () {
@@ -88,6 +101,8 @@ Route::middleware(['role:seller'])->group(function () {
     Route::match(['get', 'post'], '/dashboard-seller/product-image/edit/{slug}/{product_image_id}', [DashboardSellerController::class, 'editProductImage']);
     Route::get("/dashboard-seller/product-image/delete/{id}", [DashboardSellerController::class, 'deleteProductImage']);
 
+    Route::get('/sales', [SalesController::class, 'showSales']);
+    Route::get('/sales/confirm-payment', [SalesController::class, 'confirmPayment']);
 
 });
 

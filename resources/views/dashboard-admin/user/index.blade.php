@@ -57,7 +57,7 @@
                                 <td>{{ $user->nisn }}</td>
                                 <td>{{ $user->role }}</td>
                                 <td>
-                                    <form action="/dashboard/user/approve-the-user" method="post">
+                                    <form action="/dashboard-admin/user/approve-the-user" method="post">
                                         @csrf
                                     
                                         <input type="hidden" name="status" value="{{ $user->status === 1 ? 0 : 1 }}">

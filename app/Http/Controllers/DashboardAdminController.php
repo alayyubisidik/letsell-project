@@ -23,14 +23,20 @@ class DashboardAdminController extends Controller
         if($request->isMethod('GET')){
             return view('dashboard-admin.category.create');
         }else{
-
+            
             $request->validate([
-                'name' => 'required|string|min:3|unique:categories,name'
+                'name' => 'required|string|min:3|unique:categories,name',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5000'
             ]);
+
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('category-image', $imageName, 'public');
 
             Category::create([
                 'name' => $request->input('name'),
                 'slug' => Str::slug($request->input('name'), '-'),
+                'image' => $imageName
             ]);
 
             return redirect('/dashboard-admin/category');

@@ -22,14 +22,14 @@ class StoreController extends Controller
 
         // dd($store);
 
-        if ($store->subscription_expiry_date && now() > $store->subscription_expiry_date) {
-            $request->session()->forget('store');
+        // if ($store->subscription_expiry_date && now() > $store->subscription_expiry_date) {
+        //     $request->session()->forget('store');
 
-            $store->subscription_status = 0;
-            $store->save();
+        //     $store->subscription_status = 0;
+        //     $store->save();
 
-            $request->session()->put('store', $store);
-        }
+        //     $request->session()->put('store', $store);
+        // }
 
         return view('store.index', [
             "store" => $store

@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
     public function showCheckout(Request $request){
+        if(!$request->selected_items){
+            return redirect()->back();
+        }
+    
         // Dapatkan array 'id' dari 'selected_items' dalam request
         $selectedItems = $request->input('selected_items');
         $itemIds = [];
@@ -40,12 +44,18 @@ class CheckoutController extends Controller
     
         foreach ($cartItems as $cartItem) {
             $totalOrder += $cartItem->quantity * $cartItem->product->price;
+    
+            // Pengecekan stok mencukupi
+            if ($cartItem->quantity > $cartItem->product->stock) {
+                return redirect()->back()->with('message-error', 'Insufficient stock for product: ' . $cartItem->product->name);
+            }
         }
     
         // Buat entri baru dalam tabel 'orders'
         $order = new Order();
         $order->total = $totalOrder;
         $order->user_id = Auth::user()->id;
+        $order->store_id = $firstStoreId;
         $order->status = "unorder";
         $order->save();
     
@@ -57,10 +67,7 @@ class CheckoutController extends Controller
             $orderItem->quantity = $cartItem->quantity;
             $orderItem->subtotal = $cartItem->product->price * $cartItem->quantity;
             $orderItem->save();
-
-            $product = $cartItem->product;
-            $product->stock -= $cartItem->quantity;
-            $product->save();
+    
         }
     
         // Query ulang untuk mendapatkan data yang baru saja disimpan
@@ -72,14 +79,15 @@ class CheckoutController extends Controller
     }
     
     
-    public function submitCheckout(Request $request){
+    public function submitCheckout(Request $request){  
+
         $order = Order::where('id', $request->order_id)->first();
         $order->place_of_payment = $request->place_of_payment;
         $order->status = "unpaid";
         $order->save();
 
 
-        return redirect('/');
+        return redirect('/purchase');
 
     }
 

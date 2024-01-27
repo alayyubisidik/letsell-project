@@ -52,25 +52,43 @@
                     <p>Welcome to FreshCart! Enter your email to get started.</p>
                 </div>
 
-                <form action="/register" method="POST">
+                <form action="/register" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-3">
                         <div class="col-12">
-                            <input type="text" name="name" class="form-control" placeholder="name" required>
+                            @error('name')
+                                <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                            @enderror
+                            <input type="text" name="name" class="form-control" placeholder="name" >
                         </div>
                         <div class="col-12">
-                            <input type="text" name="username" class="form-control" placeholder="username" required>
+                            @error('username')
+                                <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                            @enderror
+                            <input type="text" name="username" class="form-control" placeholder="username" >
                         </div>
                         <div class="col-12">
-                            <input type="password" name="password" class="form-control" placeholder="password" required>
+                            @error('password')
+                                <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                            @enderror
+                            <input type="password" name="password" class="form-control" placeholder="password" >
                         </div>
                         <div class="col-12">
-                            <input type="number" name="contact" class="form-control" placeholder="contact" required>
+                            @error('contact')
+                                <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                            @enderror
+                            <input type="number" name="contact" class="form-control" placeholder="contact" >
                         </div>
                         <div class="col-12">
-                            <input type="number" name="NIS" class="form-control" placeholder="NIS" required>
+                            @error('nis')
+                                <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                            @enderror
+                            <input type="number" name="nis" class="form-control" placeholder="NIS" >
                         </div>
                         <div class="col-12">
+                            @error('profile_picture')
+                                <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                            @enderror
                             <input type="file" name="profile_picture" class="form-control" onchange="previewImage(this)">
                         </div>
                         <img id="preview" src="#" alt="Preview" style="display: none; max-width: 200px; margin-top: 10px;">

@@ -6,9 +6,10 @@
 
     <h1>Shooping Cart</h1>
 
+
     <form action="/checkout" method="POST">
         @csrf
-    <div style="padding-bottom: 10rem;">
+        <div style="padding-bottom: 10rem;">
             <div
                 style="background-color: #cbd5e1; display: flex; justify-content: space-around; margin-top: 3rem; padding: 1rem">
                 <p>Product</p>
@@ -20,9 +21,9 @@
 
             @foreach ($cartItems as $index => $item)
                 <div style="display: flex; gap: 1rem">
-                    <input type="checkbox" name="selected_items[{{ $index }}][id]" value="{{ $item->id }}" id="checkbox_{{ $index }}" onchange="calculateTotal()">
-                <!-- ... (kode HTML lainnya) ... -->
-                {{-- <input type="hidden" name="selected_items[{{ $index }}][quantity]" value="{{ $item->quantity }}"> --}}
+                    {{-- <input type="checkbox" name="selected_items[{{ $index }}][id]" value="{{ $item->id }}" id="checkbox_{{ $index }}" onchange="calculateTotal()"> --}}
+                    <input type="checkbox" name="selected_items[{{ $index }}][id]" value="{{ $item->id }}"
+                        id="checkbox_{{ $index }}" onchange="calculateTotal()">
                     <div
                         style="background-color: #cbd5e1; display: flex; justify-content: center; margin-top: 1rem; padding: 1rem">
                         <div style="display: flex; gap: 1rem; width: 20%; justify-content: center">
@@ -38,21 +39,18 @@
                             {{ number_format($item->product->price, 0, ',', '.') }}</p>
 
                         <div style="display: flex; justify-content: center; width: 20%">
-                            {{-- <form action="/cart" method="POST" style=""> --}}
-                                @csrf
-                                @if (session('message-error'))
-                                    <p style="color: red; font-size: small;">{{ session('message-error') }}</p>
-                                @endif
-                                @if (session('message-success'))
-                                    <p style="color: green; font-size: small;">{{ session('message-success') }}</p>
-                                @endif
-                                <div style="">
-                                    <input type="hidden" name="quantity" value="{{ $item->quantity }}"
-                                        data-index="{{ $index }}" oninput="calculateTotal(this)">
-                                    {{-- <p>{{ $item->product->stock }} items left</p> --}}
-                                </div>
-                                <p>{{ $item->quantity }}</p>
-                            {{-- </form> --}}
+                            @if (session('message-error'))
+                                <p style="color: red; font-size: small;">{{ session('message-error') }}</p>
+                            @endif
+                            @if (session('message-success'))
+                                <p style="color: green; font-size: small;">{{ session('message-success') }}</p>
+                            @endif
+                            <div style="">
+                                {{-- <input type="hidden" name="quantity" value="{{ $item->quantity }}"
+                                        data-index="{{ $index }}" oninput="calculateTotal(this)"> --}}
+                                <input disabled type="number" name="quantity_{{ $index }}" value="{{ $item->quantity }}"
+                                    oninput="calculateTotal()">
+                            </div>
                         </div>
 
                         <div style="width: 20%; text-align: center;">
@@ -81,37 +79,37 @@
         // Fungsi untuk menghitung total berdasarkan harga dan kuantitas
         function calculateTotal() {
             var total = 0;
-    
+
             @foreach ($cartItems as $index => $item)
                 if (document.getElementById('checkbox_{{ $index }}').checked) {
                     var price = parseFloat(document.getElementById('price_{{ $index }}').dataset.price);
-                    var quantity = parseInt(document.getElementsByName('quantity')[{{ $index }}].value);
-    
+                    var quantity = parseInt(document.getElementsByName('quantity_{{ $index }}')[0].value);
+
                     // Menangani nilai kosong atau NaN pada quantity
                     if (isNaN(quantity) || quantity < 0) {
                         quantity = 0;
                     }
-    
+
                     total += price * quantity;
                 }
             @endforeach
-    
+
             // Menampilkan total
             var totalElement = document.querySelector('div[style*="background-color: #ccc;"] p');
             totalElement.innerText = 'Total (' + countChecked() + ' item) : Rp. ' + total.toLocaleString();
         }
-    
+
         // Fungsi untuk menghitung jumlah checkbox yang dicentang
         function countChecked() {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             var count = 0;
-    
-            checkboxes.forEach(function (checkbox) {
+
+            checkboxes.forEach(function(checkbox) {
                 if (checkbox.checked) {
                     count++;
                 }
             });
-    
+
             return count;
         }
     </script>

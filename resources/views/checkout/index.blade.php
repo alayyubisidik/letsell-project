@@ -9,9 +9,10 @@
 <div style="background-color: #cbd5e1; margin-top: 3rem; padding: 1rem">
     <p>Place of payment</p>
 
-    <form id="checkoutForm" action="/checkout/order?order_id={{ $order->id }}" method="POST">
+    <form id="checkoutForm" action="/checkout/order" method="POST">
         @csrf
-        <input style="width: 100%" name="place_of_payment" required>
+        <input type="text" style="width: 100%" name="place_of_payment" placeholder="place of payment" required>
+        <input type="hidden" name="order_id" value="{{ $order->id }}" style="width: 100%" >
     </form>
 </div>
 
@@ -64,6 +65,7 @@
 
     <div style="width: 100%; display: flex; justify-content: space-between">
         <p>By clicking “Place Order”, I agree to the Product Protection's Terms & Conditions.</p>
+        <p>{{ $order->total }}</p>
         <button id="placeOrderButton">Place Order</button>
     </div>
 </div>
