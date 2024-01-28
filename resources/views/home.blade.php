@@ -6,77 +6,57 @@
 
 <section class="mt-8">
     <div class="container">
-       <!-- row -->
       <div class="row">
         <div class="col-xxl-8 col-xl-7 ">
-           <!-- hero slider -->
           <div class="hero-slider">
             <div
               style="background: url(../assets/images/slider/slider-image-1.jpg)no-repeat; background-size: cover; border-radius: .5rem;">
               <div class="ps-lg-12 py-lg-16 col-md-7 py-14 px-8 text-xs-center">
-                 <!-- badge -->
                 <div class="d-flex align-items-center mb-4"><span>Exclusive Offer</span> <span
                     class="badge bg-danger ms-2">15%</span></div>
-                     <!-- title -->
                 <h2 class="text-dark display-5 fw-bold mb-3">Best Online Deals, Free Stuff </h2>
                 <p class="fs-5 text-dark">Only on this week... Don’t miss</p>
-                 <!-- price -->
                 <div class="mb-4 mt-4"><span class="text-dark">Start from<span
                       class="fs-4 text-danger ms-1">$5.99</span></span></div>
-                       <!-- btn -->
                 <a href="#!" class="btn btn-primary">Get Best Deal <i
                     class="feather-icon icon-arrow-right ms-1"></i></a>
               </div>
             </div>
-             <!-- img -->
+
             <div class=" "
               style="background: url(../assets/images/slider/slider-image-2.jpg)no-repeat; background-size: cover; border-radius: .5rem;">
               <div class="ps-lg-12 py-lg-16 col-md-7 py-14 ps-8 text-xs-center">
-                 <!-- badge -->
                 <div class="d-flex align-items-center mb-4"><span>Exclusive Offer</span> <span
                     class="badge bg-danger ms-2">35%</span></div>
-  
-       <!-- title -->
                 <h2 class="text-dark display-5 fw-bold mb-3">Chocozay wafer-rolls Deals </h2>
-                       <!-- para -->
                 <p class="fs-5 text-dark">Only on this week... Don’t miss</p>
                 <div class="mb-4 mt-4"><span class="text-dark">Start from<span
                       class="fs-4 text-danger ms-1">$34.99</span></span></div>
-                             <!-- btn -->
                 <a href="#!" class="btn btn-primary">Shop Deals Now<i
                     class="feather-icon icon-arrow-right ms-1"></i></a>
               </div>
             </div>
-                   <!-- img -->
             <div class=" "
               style="background: url(../assets/images/slider/slider-image-3.jpg)no-repeat; background-size: cover; border-radius: .5rem;">
               <div class="ps-lg-12 py-lg-16 col-md-7 py-14 ps-8 text-xs-center">
-                       <!-- badge -->
                 <div class="d-flex align-items-center mb-4"><span>Exclusive Offer</span> <span
                     class="badge bg-danger ms-2">20%</span></div>
-       <!-- title -->
                 <h2 class="text-dark display-5 fw-bold mb-3">Cokoladni Kolutici
                   Lasta, 290g </h2>
-                         <!-- para -->
                 <p class="fs-5 text-dark">Only on this week... Don’t miss</p>
                 <div class="mb-4 mt-4"><span class="text-dark">Start from<span
                       class="fs-4 text-primary ms-1">$5.99</span></span></div>
-                             <!-- btn -->
                 <a href="#!" class="btn btn-primary">Shop This Week Offer <i
                     class="feather-icon icon-arrow-right ms-1"></i></a>
               </div>
-  
             </div>
           </div>
         </div>
         <div class="col-xxl-4 col-xl-5 col-12 d-md-flex d-xl-block">
   
           <div class="banner mb-6 w-100 ">
-            <!-- Banner Design -->
-            <!-- Banner Content -->
             <div class="banner-img">
               <img src="../assets/images/banner/ad-banner-1.jpg" alt="" class="img-fluid rounded-3 w-100">
-  
               <div class="banner-text">
                 <h3 class="mb-0 fs-2 fw-bold">10% cashback on
                   personal care </h3>
@@ -86,59 +66,35 @@
                 </div>
                 <a href="#" class="btn btn-dark">Shop Now</a>
               </div>
-              <!-- Banner Content -->
-              <!-- Banner Image -->
-  
-              
             </div>
           </div>
   
   
           <div class="banner w-100 ">
-            <!-- Banner Design -->
-            <!-- Banner Content -->
             <div class="banner-img">
               <img src="../assets/images/banner/ad-banner-2.jpg" alt="" class="img-fluid rounded-3 w-100">
               <div class="banner-text">
                 <h3 class="fs-2 fw-bold lh-1 mb-2">Say yes to <br>
                   season’s fresh </h3>
-  
                 <p class="fs-5">Refresh your day <br>
                   the fruity way</p>
-  
-  
                 <a href="#" class="btn btn-dark mt-2">Shop Now</a>
               </div>
-  
-              <!-- Banner Content -->
-              <!-- Banner Image -->
-  
-              
             </div>
           </div>
-  
-  
         </div>
-  
       </div>
-  
-  
-  
-  
     </div>
   </section>
-<!-- Category Section Start-->
+
 <section class="mb-lg-10 mt-lg-14 my-8">
     <div class="container">
       <div class="row">
         <div class="col-12 mb-6">
-
           <h3 class="mb-0">Featured Categories</h3>
-
         </div>
       </div>
       <div class="category-slider ">
-
         <div class="item"> <a href="pages/shop-grid.html" class="text-decoration-none text-inherit">
             <div class="card card-product mb-4">
               <div class="card-body text-center py-8">
@@ -228,16 +184,10 @@
               </div>
             </div>
           </a></div>
-
-
-
-
       </div>
-
-
     </div>
   </section>
-  <!-- Category Section End-->
+
   <section>
     <div class="container">
       <div class="row">
@@ -252,12 +202,9 @@
                 <a href="#!" class="btn btn-dark">Shop Now</a>
               </div>
             </div>
-
           </div>
-
         </div>
         <div class="col-12 col-lg-6 ">
-
           <div>
             <div class="py-10 px-8 rounded-3"
               style="background:url(assets/images/banner/grocery-banner-2.jpg)no-repeat; background-size: cover; background-position: center;">
@@ -269,7 +216,6 @@
                 <a href="#!" class="btn btn-dark">Shop Now</a>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -278,83 +224,59 @@
   
   <section class="my-lg-14 my-8">
     <div class="container ">
-       <!-- row -->
       <div class="row">
         <div class="col-12">
           <div class="mb-6 d-xl-flex justify-content-between align-items-center">
-             <!-- heading -->
             <div class="mb-5 mb-xl-0">
               <h3 class=" mb-0">New Products</h3>
               <p class="mb-0">New products with updated stocks</p>
             </div>
             <div>
-               <!-- nav -->
               <nav>
                 <ul class="nav nav-pills nav-scroll border-bottom-0 gap-1 " id="nav-tab" role="tablist">
- <!-- nav item -->
                   <li class="nav-item ">
-                     <!-- nav link -->
                     <a href="#" class="nav-link active " id="nav-fruitsandveg-tab" data-bs-toggle="tab"
                       data-bs-target="#nav-fruitsandveg" role="tab" aria-controls="nav-fruitsandveg"
                       aria-selected="true">Fruits & Vegetables</a>
-
                   </li>
- <!-- nav item -->
-
                   <li class="nav-item ">
-                     <!-- nav link -->
                     <a href="#" class="nav-link" id="nav-snackMunchies-tab" data-bs-toggle="tab"
                       data-bs-target="#nav-snackMunchies" role="tab" aria-controls="nav-snackMunchies"
                       aria-selected="false">Snack & Munchies</a></li>
-                       <!-- nav item -->
                   <li class="nav-item ">
-                     <!-- nav link -->
                     <a href="#" class="nav-link" id="nav-bakery-tab" data-bs-toggle="tab"
                       data-bs-target="#nav-bakery" role="tab" aria-controls="nav-bakery" aria-selected="false">Bakery
                       & Biscuits</a></li>
-                       <!-- nav item -->
                   <li class="nav-item ">
-                     <!-- nav link -->
                     <a href="#" class="nav-link" id="nav-tea-tab" data-bs-toggle="tab"
                       data-bs-target="#nav-tea" role="tab" aria-controls="nav-tea" aria-selected="false">Tea, Coffee &
                       Drinks </a></li>
-                       <!-- nav item -->
                   <li class="nav-item">
-                     <!-- nav link -->
                     <a href="#" class="nav-link" id="nav-drinks-tab" data-bs-toggle="tab"
                       data-bs-target="#nav-drinks" role="tab" aria-controls="nav-drinks" aria-selected="false">Cold
                       Drinks & Juices</a></li>
-
                 </ul>
               </nav>
-
-
             </div>
           </div>
         </div>
       </div>
-       <!-- row -->
+
       <div class="row">
         <div class="col-12">
-           <!-- tab -->
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-fruitsandveg" role="tabpanel"
               aria-labelledby="nav-fruitsandveg-tab" tabindex="0">
- <!-- row -->
               <div class="row row-cols-2 row-cols-xl-5 row-cols-md-3 g-4">
                 <div class="col ">
-                <!-- card -->
-                  <div class="card  card-product-v2 h-100">
+                  <div class="card card-product-v2 h-100">
                     <div class="card-body position-relative">
- <!-- badge -->
                       <div class="text-center position-relative ">
                         <div class=" position-absolute top-0 start-0">
                           <span class="badge bg-danger">Sale</span>
                         </div>
-                        <!-- img -->
                         <a href="#!"> <img src="../assets/images/products/product-img-1.jpg"
                             alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
-                        <!-- action btn -->
                             <div class="product-action-btn">
                           <a href="#!" class="btn-action mb-1" data-bs-toggle="modal"
                             data-bs-target="#quickViewModal"><i class="bi bi-eye"></i></a>
@@ -363,20 +285,16 @@
                           <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
                             title="Compare"><i class="bi bi-arrow-left-right"></i></a>
                         </div>
-
                       </div>
-                      <!-- title -->
                       <h2 class="fs-6"><a href="#!" class="text-inherit text-decoration-none">Haldiram's Sev
                           Bhujia</a></h2>
                       <div>
- <!-- rating -->
                         <small class="text-warning"> <i class="bi bi-star-fill"></i>
                           <i class="bi bi-star-fill"></i>
                           <i class="bi bi-star-fill"></i>
                           <i class="bi bi-star-fill"></i>
                           <i class="bi bi-star-half"></i></small> <span class="text-muted small">4.5(149)</span>
                       </div>
-                       <!-- price -->
                       <div class="d-flex justify-content-between align-items-center mt-3">
                         <div><span class="text-danger">$18</span> <span
                             class="text-decoration-line-through text-muted">$24</span>
@@ -384,7 +302,6 @@
                         <div><span class="text-uppercase small text-primary">
                             In Stock</span></div>
                       </div>
-                       <!-- btn -->
                       <div class="product-fade-block">
                         <div class="d-grid mt-4">
                           <a href="#" class="btn btn-primary rounded-pill">Add to Cart</a>
@@ -392,15 +309,12 @@
                       </div>
 
                     </div>
-                    <!-- hidden class for hover -->
                     <div class="product-content-fade border-info" style="margin-bottom: -60px;"></div>
                   </div>
                 </div>
                 <div class="col ">
-                <!-- card -->
                   <div class="card  card-product-v2 h-100">
                     <div class="card-body position-relative">
- <!-- badge -->
                       <div class="text-center position-relative ">
 
                         <!-- img -->

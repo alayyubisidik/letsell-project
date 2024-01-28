@@ -90,7 +90,7 @@
       <div class="container">
         <div class="row w-100 align-items-center g-3">
           <div class="col-xxl-2 col-lg-3">
-            <a class="navbar-brand d-none d-lg-block" href="index.html">
+            <a class="navbar-brand d-none d-lg-block" href="/">
               <img src="assets/images/logo/freshcart-logo.svg" alt="eCommerce HTML Template">
             </a>
             <div class="d-flex justify-content-between w-100 d-lg-none">
@@ -110,7 +110,6 @@
                     </a>
                   </div>
                   <div class="list-inline-item">
-  
                     <a class="text-muted" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                       href="#offcanvasExample" role="button" aria-controls="offcanvasRight">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -123,7 +122,6 @@
                     </a>
                   </div>
                 </div>
-                <!-- Button -->
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas"
                   data-bs-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false"
                   aria-label="Toggle navigation">
@@ -131,99 +129,132 @@
                   <span class="icon-bar middle-bar"></span>
                   <span class="icon-bar bottom-bar"></span>
                 </button>
-  
               </div>
             </div>
-  
           </div>
           <div class="col-xxl-6 col-lg-5 d-none d-lg-block">
-            {{-- <form >
-                <div class="input-group mb-3" style="width: 30rem">
-                    <input type="text" name="search" class="form-control" value="{{ request('search') }}" placeholder="Search by product name, category and store" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
-                </div>
-            </form> --}}
-  
             <form action="/product" method="GET" class="search-header">
               <div class="input-group">
                 <input name="search" type="text" class="form-control border-end-0" value="{{ request('search') }}" placeholder="Search by product name, category and store"
                   aria-label="Search for products.." aria-describedby="basic-addon2">
-                  <button type="submit">
-                    <span class="input-group-text bg-transparent" id="basic-addon2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-search">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                      </svg></span>
-                  </button>
+                  <button type="submit" class="input-group-text bg-transparent" id="basic-addon2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-search">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg></button>
               </div>
             </form>
           </div>
-          <div class="col-md-2 col-xxl-3 d-none d-lg-block">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn  btn-outline-gray-400 text-muted" data-bs-toggle="modal"
-              data-bs-target="#locationModal">
-              <i class="feather-icon icon-map-pin me-2"></i>Location
-            </button>
-  
-  
-          </div>
-          <div class="col-md-2 col-xxl-1 text-end d-none d-lg-block">
-  
+          @if (Auth::user())
+            @if (Auth::user()->role == 'customer')
+              <div class="col-md-2 col-xxl-3 d-none d-lg-block">
+                <a class="btn btn-outline-gray-400 text-muted">
+                  <i class="feather-icon icon-package me-2"></i>Start Selling
+                </a>
+              </div>
+              <div class="col-md-2 col-xxl-1 text-end d-none d-lg-block">
+                <div class="list-inline">
+                  <div class="list-inline-item">
+                    <a href="/wishlist" class="text-muted position-relative">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-heart">
+                        <path
+                          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                        </path>
+                      </svg>
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                        5
+                        <span class="visually-hidden">unread messages</span>
+                      </span>
+                    </a></div>
+    
+                  <div class="list-inline-item">
+                    <a href="/profile" class="text-muted" >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-user">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </a></div>
+    
+                    <div class="list-inline-item">
+                      <a href="/cart" class="text-muted position-relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="feather feather-shopping-bag">
+                          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                          <line x1="3" y1="6" x2="21" y2="6"></line>
+                          <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                          5
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </a></div>
+                </div>
+              </div>
+            @elseif (Auth::user()->role == 'seller')
+              <div class="col-md-2 col-xxl-3 d-none d-lg-block">
+                <a class="btn btn-outline-gray-400 text-muted" href="/sales">
+                  <i class="feather-icon icon-package me-2"></i>Sales
+                </a>
+              </div>
+              <div class="col-md-2 col-xxl-1 text-end d-none d-lg-block">
+                <div class="list-inline">
+                  <div class="list-inline-item">
+                    <a href="/dashboard-seller" class="text-muted" >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-trello">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <rect x="7" y="7" width="3" height="9"></rect>
+                      <rect x="14" y="7" width="3" height="5"></rect>
+                    </svg>
+                    </a></div>
+    
+                  <div class="list-inline-item">
+                    <a href="/profile" class="text-muted" >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-user">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </a></div>
+                </div>
+              </div>
+            @endif
+          @else ()
+          {{-- <div class="col-md-2 col-xxl-3 d-none d-lg-block">
+            <a class="btn btn-outline-gray-400 text-muted">
+              <i class="feather-icon icon-package me-2"></i>Start Selling
+            </a>
+          </div> --}}
+          <div class="col-md-4 col-xxl-4 text-end d-none d-lg-block">
             <div class="list-inline">
               <div class="list-inline-item">
-  
-                <a href="pages/shop-wishlist.html" class="text-muted position-relative">
-  
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-heart">
-                    <path
-                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                    </path>
-                  </svg>
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                    5
-                    <span class="visually-hidden">unread messages</span>
-                  </span>
-                </a></div>
-              <div class="list-inline-item">
-  
-                <a href="/login" class="text-muted" >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-user">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </a></div>
-              <div class="list-inline-item">
-  
-                <a class="text-muted position-relative " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                  href="#offcanvasExample" role="button" aria-controls="offcanvasRight">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-shopping-bag">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <path d="M16 10a4 4 0 0 1-8 0"></path>
-                  </svg>
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                    1
-                    <span class="visually-hidden">unread messages</span>
-                  </span>
+                <a href="/login" class="btn btn-outline-primary">
+                  Login
                 </a>
-  
+              </div>
+              <div class="list-inline-item">
+                <a href="/register" class="btn btn-primary">
+                  Register
+                </a>
               </div>
             </div>
           </div>
+          @endif
         </div>
         </div>
     </nav>
+
     <nav class="navbar navbar-expand-lg navbar-light navbar-default pt-0 pb-0">
       <div class="container px-0 px-md-3">
-  
         <div class="dropdown me-3 d-none d-lg-block">
           <button class="btn btn-primary px-6 " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -249,15 +280,11 @@
           </ul>
         </div>
   
-  
-  
-        <div class="offcanvas offcanvas-start p-4 p-lg-0" id="navbar-default">
-  
+        {{-- <div class="offcanvas offcanvas-start p-4 p-lg-0" id="navbar-default">
           <div class="d-flex justify-content-between align-items-center mb-2 d-block d-lg-none">
             <div><img src="assets/images/logo/freshcart-logo.svg" alt="eCommerce HTML Template"></div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-  
           <div class="d-block d-lg-none mb-2 pt-2">
             <a class="btn btn-primary w-100 d-flex justify-content-center align-items-center" data-bs-toggle="collapse"
               href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -285,7 +312,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="d-lg-none d-block mb-3">
             <button type="button" class="btn  btn-outline-gray-400 text-muted w-100 " data-bs-toggle="modal"
               data-bs-target="#locationModal">
@@ -602,7 +629,7 @@
           </div>
   
   
-        </div>
+        </div> --}}
       </div>
   
     </nav>
