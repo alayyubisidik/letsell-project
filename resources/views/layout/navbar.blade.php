@@ -150,7 +150,7 @@
           @if (Auth::user())
             @if (Auth::user()->role == 'customer')
               <div class="col-md-2 col-xxl-3 d-none d-lg-block">
-                <a class="btn btn-outline-gray-400 text-muted">
+                <a href="/store-create" class="btn btn-outline-gray-400 text-muted">
                   <i class="feather-icon icon-package me-2"></i>Start Selling
                 </a>
               </div>
@@ -165,9 +165,11 @@
                           d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                         </path>
                       </svg>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                        5
+                      @if ($wishlist_count > 0)
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                          {{ $wishlist_count }}
                         <span class="visually-hidden">unread messages</span>
+                      @endif
                       </span>
                     </a></div>
     
@@ -190,9 +192,11 @@
                           <line x1="3" y1="6" x2="21" y2="6"></line>
                           <path d="M16 10a4 4 0 0 1-8 0"></path>
                         </svg>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                          5
+                        @if ($cart_count > 0)
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                            {{ $cart_count }}
                           <span class="visually-hidden">unread messages</span>
+                        @endif
                         </span>
                       </a></div>
                 </div>
@@ -269,14 +273,9 @@
               </svg></span> All Departments
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Dairy, Bread & Eggs</a></li>
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Snacks & Munchies</a></li>
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Fruits & Vegetables</a></li>
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Cold Drinks & Juices</a></li>
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Breakfast & Instant Food</a></li>
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Bakery & Biscuits</a></li>
-  
-            <li><a class="dropdown-item" href="pages/shop-grid.html">Chicken, Meat & Fish</a></li>
+            @foreach ($categories as $category)
+              <li><a class="dropdown-item" href="/product?search={{ $category->slug }}">{{ $category->name }}</a></li>
+            @endforeach
           </ul>
         </div>
   

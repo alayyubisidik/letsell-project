@@ -20,7 +20,7 @@
           <div class="pt-10 pe-lg-10">
             <ul class="nav flex-column nav-pills nav-pills-dark">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="account-orders.html"><i
+                <a class="nav-link " aria-current="page" href="/purchase"><i
                     class="feather-icon icon-shopping-bag me-2"></i>Your Orders</a>
               </li>
               <li class="nav-item">
@@ -53,25 +53,38 @@
               <h5 class="mb-4">Account details</h5>
               <div class="row">
                 <div class="col-lg-5">
-                  <form>
+                  <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
-                        <label class="form-label">NIS</label>
-                        <input type="number" disabled class="form-control" value="{{ $user->nis }}">
+                      <label class="form-label">NIS</label>
+                      @error('nis')
+                        <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                      @enderror
+                      <input type="number" disabled class="form-control" value="{{ $user->nis }}">
                     </div>
                     <div class="mb-3">
                       <label class="form-label">Name</label>
-                      <input type="text" class="form-control" value="{{ $user->name }}">
+                        @error('name')
+                          <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                        @enderror
+                      <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="text" class="form-control" value="{{ $user->username }}">
+                        @error('username')
+                          <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                        @enderror
+                        <input name="username" type="text" class="form-control" value="{{ $user->username }}">
                       </div>
                     <div class="mb-5">
                       <label class="form-label">Contact</label>
-                      <input type="number" class="form-control" value="{{ $user->contact }}">
+                      @error('contact')
+                        <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                      @enderror
+                      <input name="contact" type="number" class="form-control" value="{{ $user->contact }}">
                     </div>
                     <div class="mb-3">
-                      <button class="btn btn-primary">Save Details</button>
+                      <button type="submit" class="btn btn-primary">Save Details</button>
                     </div>
                   </form>
                 </div>
@@ -80,22 +93,35 @@
             <hr class="my-10">
             <div class="pe-lg-14">
               <h5 class="mb-4">Password</h5>
-              <form class=" row row-cols-1 row-cols-lg-2">
+              <form action="/profile/change-password" method="POST" class=" row row-cols-1 row-cols-lg-2">
+                @csrf
                 <div class="mb-3 col-lg-12">
-                    <label class="form-label">Old Password</label>
-                    <input type="password" class="form-control" placeholder="**********">
-                  </div>
-                <div class="mb-3 col">
-                  <label class="form-label">New Password</label>
-                  <input type="password" class="form-control" placeholder="**********">
+                  <label class="form-label">Old Password</label>
+                  @error('old_password')
+                    <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                  @enderror
+                  @if(session('message-error'))
+                    <p style="color: red; margin:0; font-size: 14px;">{{ session('message-error' )}}</p>
+                  @endif
+                  <input type="password" name="old_password" id="old_password" class="form-control" placeholder="**********">
                 </div>
                 <div class="mb-3 col">
-                  <label class="form-label">Current Password</label>
-                  <input type="password" class="form-control" placeholder="**********">
+                  <label class="form-label">New Password</label>
+                  @error('new_password')
+                    <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                  @enderror
+                  <input type="password" name="new_password" id="new_password" class="form-control" placeholder="**********">
+                </div>
+                <div class="mb-3 col">
+                  <label class="form-label">Confirm Password</label>
+                  @error('confirm_password')
+                    <p style="color: red; margin:0; font-size: 14px;">{{ $message }}</p>
+                  @enderror
+                  <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="**********">
                 </div>
                 <div class="col-12">
                   <p class="mb-4">Can’t remember your current password?<a href="#"> Reset your password.</a></p>
-                  <a href="#" class="btn btn-primary">Save Password</a>
+                  <button type="submit" class="btn btn-primary">Save Password</button>
                 </div>
               </form>
             </div>

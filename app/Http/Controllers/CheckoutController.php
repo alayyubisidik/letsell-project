@@ -81,8 +81,9 @@ class CheckoutController extends Controller
     
     public function submitCheckout(Request $request){  
 
+        // dd($request->all());
         $order = Order::where('id', $request->order_id)->first();
-        $order->place_of_payment = $request->place_of_payment;
+        $order->delivery_address = $request->delivery_address;
         $order->status = "unpaid";
         $order->save();
 
@@ -94,3 +95,4 @@ class CheckoutController extends Controller
 
 
 }
+ 

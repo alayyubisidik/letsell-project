@@ -35,7 +35,7 @@
                       <div class="col-lg-6 col-12 mb-4">
                         <div class="border p-6 rounded-3">
                           <div class="form-check mb-4">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="homeRadio" checked>
+                            <input class="form-check-input" type="radio" value="" name="delivery_address" id="homeRadio" checked>
                             <label class="form-check-label text-dark" for="homeRadio">
                               Home
                             </label>
@@ -50,7 +50,7 @@
                       <div class="col-lg-6 col-12 mb-4">
                         <div class="border p-6 rounded-3">
                           <div class="form-check mb-4">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="officeRadio">
+                            <input class="form-check-input" type="radio" value="" name="delivery_address" id="officeRadio">
                             <label class="form-check-label text-dark" for="officeRadio">
                               Office
                             </label>
@@ -65,360 +65,363 @@
                   </div>
                 </div>
               </div> --}}
-              
-              <div class="accordion-item py-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <a href="#" class="text-inherit collapsed h5"  data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    <i class="feather-icon icon-map-pin me-2 text-muted"></i>Add delivery address
-                    </a>
-                </div>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse show" 
-                  data-bs-parent="#accordionFlushExample">
-                  <ul class="nav nav-pills nav-pills-light mb-3 nav-fill mt-5" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="pills-a-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-a" type="button" role="tab" aria-controls="pills-a"
-                        aria-selected="true">Gedung <br><small>C</small>
-                      </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-b-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-b" type="button" role="tab" aria-controls="pills-b"
-                            aria-selected="false">Gedung <br><small>O</small>
-                        </button>
-                    </li>
-                    {{-- <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-Tue-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-Tue" type="button" role="tab" aria-controls="pills-Tue"
-                            aria-selected="false">Gedung <br><small>O</small>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-Wed-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-Wed" type="button" role="tab" aria-controls="pills-Wed"
-                            aria-selected="false">Gedung <br><small>E</small>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-Fri-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-Fri" type="button" role="tab" aria-controls="pills-Fri"
-                            aria-selected="false">Gedung <br><small>F</small>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-Sat-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-Sat" type="button" role="tab" aria-controls="pills-Sat"
-                            aria-selected="false">Gedung <br><small>N</small>
-                        </button>
-                    </li> --}}
-                  </ul>
+              <form action="/checkout/order" method="POST">
+                @csrf
+                <input type="hidden" name="order_id" value="{{ $order->id }}" style="width: 100%" >
 
-                  <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-a" role="tabpanel"
-                      aria-labelledby="pills-a-tab" tabindex="0">
-                      <ul class="list-group list-group-flush mt-4">
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                          <div class="col-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                id="flexRadioDefault1">
-                              <label class="form-check-label" for="flexRadioDefault1">
-                                <span>Lt1 Perpustakaan</span>
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-2 text-end"> <a href="#"
-                              class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt1 R1</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt1 R2 Lab TKK</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt1 R3 Lab TKK</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R4</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R5</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R6</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R7</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="tab-pane fade" id="pills-b" role="tabpanel" aria-labelledby="pills-b-tab"
-                      tabindex="0">
-                      <ul class="list-group list-group-flush mt-4">
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt1 R Waka</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt1 Kepsek</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt1 Lobi</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R16</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R17</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R18 Lab RPL</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt2 R19 Lab RPL</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt3 R20</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt3 R21</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt3 R22</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt3 R23</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                        <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
-                            <div class="col-4">
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                  id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                  <span>Lt3 R24</span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-2 text-end"> <a href="#"
-                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
-                        </li>
-                      </ul>
-                    </div>
+                <div class="accordion-item py-4">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <a href="#" class="text-inherit collapsed h5"  data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                      <i class="feather-icon icon-map-pin me-2 text-muted"></i>Add delivery address
+                      </a>
                   </div>
-                  <div class="mt-5 d-flex justify-content-end">
-                    <a href="#" class="btn btn-primary ms-2"  data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapseThree" aria-expanded="false"
-                      aria-controls="flush-collapseThree">Next</a>
-                  </div>
-                </div>
-              </div>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse show" 
+                    data-bs-parent="#accordionFlushExample">
+                    <ul class="nav nav-pills nav-pills-light mb-3 nav-fill mt-5" id="pills-tab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-a-tab" data-bs-toggle="pill"
+                          data-bs-target="#pills-a" type="button" role="tab" aria-controls="pills-a"
+                          aria-selected="true">Gedung <br><small>C</small>
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="pills-b-tab" data-bs-toggle="pill"
+                              data-bs-target="#pills-b" type="button" role="tab" aria-controls="pills-b"
+                              aria-selected="false">Gedung <br><small>O</small>
+                          </button>
+                      </li>
+                      {{-- <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="pills-Tue-tab" data-bs-toggle="pill"
+                              data-bs-target="#pills-Tue" type="button" role="tab" aria-controls="pills-Tue"
+                              aria-selected="false">Gedung <br><small>O</small>
+                          </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="pills-Wed-tab" data-bs-toggle="pill"
+                              data-bs-target="#pills-Wed" type="button" role="tab" aria-controls="pills-Wed"
+                              aria-selected="false">Gedung <br><small>E</small>
+                          </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="pills-Fri-tab" data-bs-toggle="pill"
+                              data-bs-target="#pills-Fri" type="button" role="tab" aria-controls="pills-Fri"
+                              aria-selected="false">Gedung <br><small>F</small>
+                          </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="pills-Sat-tab" data-bs-toggle="pill"
+                              data-bs-target="#pills-Sat" type="button" role="tab" aria-controls="pills-Sat"
+                              aria-selected="false">Gedung <br><small>N</small>
+                          </button>
+                      </li> --}}
+                    </ul>
 
-              <div class="accordion-item py-4">
-                <a href="#" class="text-inherit h5"  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  <i class="feather-icon icon-shopping-bag me-2 text-muted"></i>Delivery instructions
-                </a>
-                <div id="flush-collapseThree" class="accordion-collapse collapse " 
-                  data-bs-parent="#accordionFlushExample">
-                  <div class="mt-5">
-                    <label for="DeliveryInstructions" class="form-label sr-only">Delivery instructions</label>
-                    <textarea class="form-control" id="DeliveryInstructions" rows="3"
-                      placeholder="Write delivery instructions "></textarea>
-                    <p class="form-text">Add instructions for how you want your order shopped and/or delivered</p>
+                    <div class="tab-content" id="pills-tabContent">
+                      <div class="tab-pane fade show active" id="pills-a" role="tabpanel"
+                        aria-labelledby="pills-a-tab" tabindex="0">
+                        <ul class="list-group list-group-flush mt-4">
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                            <div class="col-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" required value="Lt1 Perpustakaan" name="delivery_address"
+                                  id="delivery_address">
+                                <label class="form-check-label" for="delivery_address">
+                                  <span>Lt1 Perpustakaan</span>
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-2 text-end"> <a href="#"
+                                class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt1 R1" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt1 R1</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt1 R2 Lab TKK" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt1 R2 Lab TKK</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt1 R3 Lab TKK" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt1 R3 Lab TKK</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R4" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R4</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R5" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R5</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R6" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R6</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R7" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R7</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="pills-b" role="tabpanel" aria-labelledby="pills-b-tab"
+                        tabindex="0">
+                        <ul class="list-group list-group-flush mt-4">
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt1 R Waka" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt1 R Waka</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt1 Kepsek" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt1 Kepsek</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt1 Lobi" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt1 Lobi</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R16" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R16</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R17" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R17</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R18 Lab RPL" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R18 Lab RPL</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt2 R19 Lab RPL" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt2 R19 Lab RPL</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check"> 
+                                  <input class="form-check-input"  type="radio" required value="Lt3 R20" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt3 R20</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt3 R21" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt3 R21</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt3 R22" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt3 R22</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt3 R23" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt3 R23</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                          <li class="list-group-item  d-flex justify-content-between align-items-center px-0 py-3">
+                              <div class="col-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" required value="Lt3 R24" name="delivery_address"
+                                    id="delivery_address">
+                                  <label class="form-check-label" for="delivery_address">
+                                    <span>Lt3 R24</span>
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-2 text-end"> <a href="#"
+                                  class="btn btn-outline-gray-400 btn-sm text-muted">Choose</a></div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                     <div class="mt-5 d-flex justify-content-end">
-                      <a href="#" class="btn btn-outline-gray-400 text-muted" 
-                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                        aria-controls="flush-collapseTwo">Prev</a>
                       <a href="#" class="btn btn-primary ms-2"  data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseFour" aria-expanded="false"
-                        aria-controls="flush-collapseFour">Next</a>
+                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                        aria-controls="flush-collapseThree">Next</a>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="accordion-item py-4">
+                <div class="accordion-item py-4">
+                  <a href="#" class="text-inherit h5"  data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    <i class="feather-icon icon-shopping-bag me-2 text-muted"></i>Delivery instructions
+                  </a>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse " 
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="mt-5">
+                      <label for="DeliveryInstructions" class="form-label sr-only">Delivery instructions</label>
+                      <textarea name="delivery_instruction"required class="form-control" id="DeliveryInstructions" rows="3"
+                        placeholder="Write delivery instructions "></textarea>
+                      <p class="form-text">Add instructions for how you want your order shopped and/or delivered</p>
+                      <div class="mt-5 d-flex justify-content-end">
+                        <a href="#" class="btn btn-outline-gray-400 text-muted" 
+                          data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                          aria-controls="flush-collapseTwo">Prev</a>
+                        <a href="#" class="btn btn-primary ms-2"  data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseFour" aria-expanded="false"
+                          aria-controls="flush-collapseFour">Next</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item py-4">
                 <a href="#" class="text-inherit h5"  data-bs-toggle="collapse"
                   data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                   <i class="feather-icon icon-credit-card me-2 text-muted"></i>Payment Method
@@ -431,7 +434,7 @@
                         <div class="card-body p-6">
                           <div class="d-flex">
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="paypal">
+                              <input class="form-check-input" type="radio" value="" name="delivery_address" id="paypal">
                               <label class="form-check-label ms-2" for="paypal">
                               </label>
                             </div>
@@ -449,7 +452,7 @@
                         <div class="card-body p-6">
                           <div class="d-flex">
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="cashonDelivery">
+                              <input class="form-check-input" type="radio" required id="cashonDelivery">
                               <label class="form-check-label ms-2" for="cashonDelivery">
                               </label>
                             </div>
@@ -464,12 +467,13 @@
                         <a href="#" class="btn btn-outline-gray-400 text-muted" 
                           data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
                           aria-controls="flush-collapseThree">Prev</a>
-                        <button id="placeOrderButton" class="btn btn-primary ms-2">Place Order</a>
+                        <button type="submit" id="placeOrderButton" class="btn btn-primary ms-2">Place Order</a>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
+            </div>
             </div>
           </div>
 
@@ -537,7 +541,7 @@
   </section>
 
   
-<h1>Checkout</h1>
+{{-- <h1>Checkout</h1>
 
 <div style="background-color: #cbd5e1; margin-top: 3rem; padding: 1rem">
     <p>Place of payment</p>
@@ -592,10 +596,6 @@
 
 <div style="background-color: #cbd5e1; margin-top: 2rem; padding: 1rem; ">
 
-    {{-- <p style="text-align: right; ">Total Payment :
-        <p style=" font-weight: bold; text-align: right">Rp {{ number_format($cartItem->quantity * $cartItem->product->price, 0, ',', '.') }}</p>
-    </p> --}}
-
     <div style="width: 100%; display: flex; justify-content: space-between">
         <p>By clicking “Place Order”, I agree to the Product Protection's Terms & Conditions.</p>
         <p>{{ $order->total }}</p>
@@ -604,20 +604,16 @@
 </div>
 
 <script>
-    // Menangani pengiriman formulir ketika tombol "Place Order" diklik
     document.getElementById('placeOrderButton').addEventListener('click', function () {
-        // Mendapatkan nilai dari input place_of_payment
         var placeOfPaymentInput = document.getElementsByName('place_of_payment')[0].value;
 
-        // Memastikan bahwa input tidak kosong sebelum mengirimkan formulir
         if (placeOfPaymentInput.trim() === '') {
             alert('Place of payment cannot be empty.');
         } else {
-            // Jika input tidak kosong, submit formulir
             document.getElementById('checkoutForm').submit();
         }
     });
-</script>
+</script> --}}
 
 
 @endsection

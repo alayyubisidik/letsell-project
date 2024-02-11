@@ -40,7 +40,7 @@
         <div class="">
             <h2>{{ $product->name }}</h2>
             <p style="font-size: small; color: gray">by <a
-                    href="/product->store/{{ $product->store->slug }}">{{ $product->store->name }}</a> on <a
+                    href="/store/{{ $product->store->slug }}">{{ $product->store->name }}</a> on <a
                     href="product?search={{ $product->category->name }}">{{ $product->category->name }}</a></p>
 
             <p style="font-size: large; font-weight: bold;">Rp {{ number_format($product->price, 0, ',', '.') }}</p>

@@ -77,10 +77,10 @@ class UserController extends Controller
                 'confirm_password' => 'required|string|min:6|same:new_password',
             ]);
 
-            $user = User::where('username', session('username'))->first();
+            $user = User::where('username', Auth::user()->username)->first();
 
             if (!$user || !Hash::check($request->input('old_password'), $user->password)) {
-                return redirect('/profile/change-password')->with('message-error', 'Current password is incorrect');
+                return redirect('/profile')->with('message-error', 'Current password is incorrect');
             }
 
             // Update password

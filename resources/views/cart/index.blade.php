@@ -11,7 +11,7 @@
           <div class="card py-1 border-0 mb-8">
             <div>
               <h1 class="fw-bold">Shop Cart</h1>
-              <p class="mb-0">Shopping in 382480</p>
+              <p class="mb-0">There are {{ $cartItems->count() }} products in this cart.</p>
             </div>
           </div>
         </div>

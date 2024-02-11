@@ -9,7 +9,7 @@
         <div class="col-lg-12">
           <div class="mb-8">
             <h1 class="mb-1">My Wishlist</h1>
-            <p>There are 5 products in this wishlist.</p>
+            <p>There are {{ $wishlists->count() }} products in this wishlist.</p>
           </div>
           <div>
             <div class="table-responsive">
