@@ -178,6 +178,11 @@
         <script src="{{ asset('admin/js/pages/demo.datatable-init.js') }}"></script>
         <script src="{{ asset('admin/js/pages/demo.profile.js') }}"></script>
         <!-- end demo js-->
+
+        <script src="{{ asset('admin/js/vendor/dropzone.min.js') }}"></script>
+
+        <!-- File upload js -->
+        <script src="{{ asset('admin/js/ui/component.fileupload.js') }}"></script>
     </body>
 
 <!-- Mirrored from coderthemes.com/hyper/saas/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Jul 2022 10:20:07 GMT -->
